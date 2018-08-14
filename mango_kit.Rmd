@@ -1,23 +1,27 @@
 ---
 title: "Mango Ratings"
 author: "Robin Choudhury"
-date: "`r Sys.Date()`"
+date: "2018-08-14"
 output:
   html_document:
     df_print: paged
 ---
 
 ## The Data
-```{r , warning=FALSE}
+
+```{r, warning=FALSE}
 library(tidyverse)
 mango<- read_csv("data/mango_data.csv") %>%
   mutate(cultivar = tolower(cultivar)) %>%
   mutate(person = tolower(person))
+head(mango)
 ```
+
 
 My wife and I rated the mangoes over the course of about a week, tasting the different varieties as they felt more and more ripe. We each did a subjective rating of 1-10, with 1 being "this tastes terrible", and 10 being "this is literally the best mango I've ever had". We rated independent of each other, recording our ratings, and I collated the data for this dataset.
 
 ## How Did They Perform?
+
 
 ```{r}
 ggplot(mango, aes(cultivar, rating))+
@@ -29,6 +33,8 @@ ggplot(mango, aes(cultivar, rating))+
   xlab("Rating")+
   ylab("Cultivar")
 ```
+
+
 
 So overall, it looks like *Kensington Pride*, *Hayden*, and *Edwards* were clear winners, and the other varieties were not. What happened?
 
