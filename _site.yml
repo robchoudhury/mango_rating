@@ -1,0 +1,17 @@
+
+name: "Mango Ratings"
+output_dir: "."
+navbar:
+  title: "Mango Ratings"
+  left:
+    - text: "Mango Ratings"
+      href: mango_kit.html
+
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    css: 'styles.css'
+    toc: true  
+    toc_float: true  
+
