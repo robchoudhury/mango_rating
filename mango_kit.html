@@ -29,49 +29,6 @@
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
 <style type="text/css">
@@ -123,6 +80,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -328,49 +288,21 @@ div.tocify {
 </div>
 
 
+<div class="figure">
+<img src="pics/20170714_063234-min.png" />
+
+</div>
+<p>Mangos are grown widely in South Florida, but only a few varieties ever make it north, because they don’t really ship well and there isn’t a huge market. I ended up receiving some rare varieties from a collaborator down south, and I wanted to know how they ranked one to another, so my wife and I rated the different varieties.</p>
 <div id="the-data" class="section level2">
 <h2>The Data</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
-<pre><code>## -- Attaching packages ---------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 2.2.1     v purrr   0.2.4
-## v tibble  1.4.2     v dplyr   0.7.4
-## v tidyr   0.8.0     v stringr 1.3.1
-## v readr   1.1.1     v forcats 0.3.0</code></pre>
-<pre><code>## -- Conflicts ------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mango&lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/mango_data.csv&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cultivar =</span> <span class="kw">tolower</span>(cultivar)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">person =</span> <span class="kw">tolower</span>(person))</code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   cultivar = col_character(),
-##   size = col_character(),
-##   stringiness = col_character(),
-##   taste = col_character(),
-##   date = col_character(),
-##   person = col_character(),
-##   rating = col_double()
-## )</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mango)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["cultivar"],"name":[1],"type":["chr"],"align":["left"]},{"label":["size"],"name":[2],"type":["chr"],"align":["left"]},{"label":["stringiness"],"name":[3],"type":["chr"],"align":["left"]},{"label":["taste"],"name":[4],"type":["chr"],"align":["left"]},{"label":["date"],"name":[5],"type":["chr"],"align":["left"]},{"label":["person"],"name":[6],"type":["chr"],"align":["left"]},{"label":["rating"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"kensington pride","2":"Huge, 7in","3":"none","4":"muscadine","5":"7/13/2017","6":"robin","7":"10.0"},{"1":"kensington pride","2":"NA","3":"NA","4":"NA","5":"7/13/2017","6":"irina","7":"9.0"},{"1":"dot","2":"medium","3":"slight","4":"popcorn butter","5":"7/14/2017","6":"robin","7":"7.0"},{"1":"dot","2":"NA","3":"NA","4":"too sweet","5":"7/14/2017","6":"irina","7":"6.0"},{"1":"sweet tart","2":"small medium","3":"chalky","4":"NA","5":"7/14/2017","6":"robin","7":"4.0"},{"1":"sweet tart","2":"NA","3":"NA","4":"smells like tylenol, but decent flavor","5":"7/14/2017","6":"irina","7":"3.5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 <p>My wife and I rated the mangoes over the course of about a week, tasting the different varieties as they felt more and more ripe. We each did a subjective rating of 1-10, with 1 being “this tastes terrible”, and 10 being “this is literally the best mango I’ve ever had”. We rated independent of each other, recording our ratings, and I collated the data for this dataset.</p>
 </div>
 <div id="how-did-they-perform" class="section level2">
 <h2>How Did They Perform?</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mango, <span class="kw">aes</span>(cultivar, rating))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape=</span>person, <span class="dt">color=</span>person), <span class="dt">size=</span><span class="dv">3</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="kw">c</span>(.<span class="dv">3</span>, <span class="fl">0.3</span>))<span class="op">+</span>
-<span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Rating&quot;</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Cultivar&quot;</span>)</code></pre></div>
-<p><img src="mango_kit_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="figure">
+<embed src="%22img_mango/variety_rating.png%22" />
+
+</div>
 <p>So overall, it looks like <em>Kensington Pride</em>, <em>Hayden</em>, and <em>Edwards</em> were clear winners, and the other varieties were not. What happened?</p>
 <p>If you look at the other data in the file (filled with NA’s, sorry) there are notes on the stringiness and the taste of the varieties. Poor varieties like <em>Sweet Tart</em> had chalky texture in the mouth, and would sometimes smell like tylenol, or have no aroma at all. Good performers had very slight to no stringiness, and had the kind of ‘quintessential’ tastes of mango: fruity, tropical, rich. <em>Kensington Pride</em> was my favorite, and it tasted a bit like muscadine grapes. Mid-performers like <em>Nam Duk Moi</em> had stringiness, and <em>Dot</em> would sometimes have a popcorn like flavor, or tasted too sweet.</p>
 </div>
